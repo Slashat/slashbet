@@ -1,0 +1,94 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\000031}}
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\000036}}
+a {
+  color: #00B7FF;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000310}}
+h1 {
+  font-size: 40px;
+  text-align: center;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000315}}
+small {
+  display: block;
+  font-size: 12px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000320}}
+ul {
+  padding: 0;
+  margin: 20px 0 0;
+  list-style: none;
+  overflow: hidden;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000327}}
+li {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  list-style: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000334}}
+li a {
+  padding: 10px;
+  display: block;
+  text-decoration: none;
+  color: #000;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000340}}
+li a:hover {
+  background: #ccc;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000345}}
+form {
+  border: 1px solid #999;
+  border-width: 0 0 1px 1px;
+  padding: 10px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000351}}
+input {
+  padding: 0;
+  width: 80%;
+  font-size: 20px;
+  border: none;
+  display: inline-block;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000359}}
+.date {
+  width: 20%;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000363}}
+p {
+  width: 50%;
+  display: inline-block;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000368}}
+.no {
+  text-align: right;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000372}}
+.bar {
+  height: 50px;
+  background: #000;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000377}}
+.bar div {
+  background: #fff;
+  height: 100%;
+}

@@ -1,0 +1,10 @@
+doctype 5
+html(lang="sv")
+  head
+    title!= title
+    link(rel='stylesheet', href='/css/style.css')
+    meta(charset="utf-8")
+  body(style="background:#"+hex)
+    h1!= title
+    block post
+    block content
