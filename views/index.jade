@@ -4,7 +4,7 @@ block content
   ul
     each bet in bets
       li(style="background:#"+bet.color)
-        a(href=bet.hash)= bet.bet+" ("+bet.date+")"
+        a(href=bet.id)= bet.bet+" ("+bet.date+")"
 
 block post
   form(action='/post',method='post')

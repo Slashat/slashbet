@@ -33,8 +33,8 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.post('/post', routes.post);
-app.get('/:hash', routes.single);
-app.get('/:hash/:vote', routes.vote);
+app.get('/:id', routes.single);
+app.get('/:id/:vote', routes.vote);
 
 
 

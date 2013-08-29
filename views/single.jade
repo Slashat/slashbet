@@ -3,10 +3,10 @@ extends layout
 block content
 
   p.yes
-    a(href="/"+bet.hash+'/yes') Rösta ja (#{bet.yes})
+    a(href="/"+bet.id+'/yes') Rösta ja (#{bet.yes})
 
   p.no
-    a(href="/"+bet.hash+'/no') Rösta nej (#{bet.no})
+    a(href="/"+bet.id+'/no') Rösta nej (#{bet.no})
 
   if percent !== underfined
     div(class="bar")
