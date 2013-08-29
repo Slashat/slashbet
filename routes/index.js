@@ -49,6 +49,9 @@ function lpad (str, length) {
  */
 
 exports.index = function index(req, res){
+
+  console.log(req);
+
   db.query('SELECT bets.*, COUNT(CASE WHEN vote IS NOT NULL THEN 1 END) as votes FROM bets LEFT JOIN votes ON bets.id = votes.bet_id GROUP BY id ORDER BY votes DESC', function(err, result) {
     if(err) return console.error(err);
 
@@ -86,6 +89,8 @@ exports.vote = function vote(req, res){
     res.redirect('/');
   }
 
+  var clientIP = getClientAddress(req);
+
   db.query('SELECT * FROM bets WHERE id = $1', [req.params.id], function(err, result) {
     if(err) return console.error(err);
     if(result.rows.length !== 1)
@@ -95,12 +100,12 @@ exports.vote = function vote(req, res){
     else
     {
       var bet = result.rows[0];
-      db.query('SELECT * FROM votes WHERE bet_id = $1 AND ip = $2', [bet.id, req.connection.remoteAddress], function(err, result) {
+      db.query('SELECT * FROM votes WHERE bet_id = $1 AND ip = $2', [bet.id, clientIP], function(err, result) {
         if(result.rows.length !== 0)
         {
           res.redirect('/'+req.params.id);
         } else {
-          db.query('INSERT INTO votes(bet_id, ip, vote) values($1, $2, $3)', [bet.id, req.connection.remoteAddress, req.params.vote], function(err, result) {
+          db.query('INSERT INTO votes(bet_id, ip, vote) values($1, $2, $3)', [bet.id, clientIP, req.params.vote], function(err, result) {
             // Let's just hope it worked.
             // At least for now :)
             res.redirect('/'+req.params.id);
@@ -114,7 +119,8 @@ exports.vote = function vote(req, res){
 exports.post = function post(req, res) {
 
   var hash = sh.unique(req.body.bet);
-  var hex = ipTohex(req.connection.remoteAddress);
+  var clientIP = getClientAddress(req);
+  var hex = ipTohex(clientIP);
   var date = req.body.date || new Date;
 
   db.query('INSERT INTO bets(bet, color, date, hash) values($1, $2, $3, $4)', [req.body.bet, hex, date, hash], function(err, result) {
@@ -123,4 +129,10 @@ exports.post = function post(req, res) {
     // At least for now :)
     res.redirect('/');
   });
+}
+
+function getClientAddress(request){
+    with(request)
+        return (headers['x-forwarded-for'] || '').split(',')[0]
+            || connection.remoteAddress
 }
