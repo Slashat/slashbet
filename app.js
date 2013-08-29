@@ -7,6 +7,7 @@ var routes = require('./routes');
 var http = require('http');
 var path = require('path');
 
+
 var app = express();
 
 
@@ -16,14 +17,16 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.favicon());
 app.use(express.logger('dev'));
+
+app.use(express.cookieParser());
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 
+var auth = require('./lib/auth');
+app.use(auth);
+
 app.use(express.static(__dirname + '/public'));
-
-
 app.use(app.router);
-//app.use(express.session({ secret: 'slashats-super-duper-secret-needs-to-be-updated' }));
 
 
 // development only
@@ -31,11 +34,11 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+
 app.get('/', routes.index);
-app.post('/post', routes.post);
+app.post('/post', auth.ensureAuthenticated, routes.post);
 app.get('/:id', routes.single);
 app.get('/:id/:vote', routes.vote);
-
 
 
 http.createServer(app).listen(app.get('port'), function(){

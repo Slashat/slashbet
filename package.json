@@ -16,7 +16,9 @@
     "shorthash": "*",
     "mysql": "*",
     "node-sass": "*",
-    "pg": "2.x"
+    "pg": "2.x",
+    "passport": "*",
+    "passport-github": "*"
   },
   "devDependencies": {
         "grunt": "~0.4.1",

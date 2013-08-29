@@ -52,7 +52,7 @@ exports.index = function index(req, res){
   db.query('SELECT bets.*, COUNT(CASE WHEN vote IS NOT NULL THEN 1 END) as votes FROM bets LEFT JOIN votes ON bets.id = votes.bet_id GROUP BY id ORDER BY votes DESC', function(err, result) {
     if(err) return console.error(err);
 
-    res.render('index', { title: 'Slashbet', bets: result.rows });
+    res.render('index', { title: 'Slashbet', bets: result.rows, isAuthenticated: req.isAuthenticated() });
   });
 }
 
