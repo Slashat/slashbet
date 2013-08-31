@@ -1,13 +1,11 @@
 extends ../../../views/layout
 
 block content
-
-  p.yes
-    a(href="/"+bet.id+'/yes') Rösta ja (#{bet.yes})
-
-  p.no
-    a(href="/"+bet.id+'/no') Rösta nej (#{bet.no})
-
   if percent !== underfined
     div(class="bar")
-      div(style="width:"+percent+"%;")
+      p.yes
+        a(href="/"+bet.id+'/yes') Rösta ja (#{bet.yes})
+      p.no
+        a(href="/"+bet.id+'/no') Rösta nej (#{bet.no})
+      div(class="inner")
+        div(style="width:"+percent+"%;")
