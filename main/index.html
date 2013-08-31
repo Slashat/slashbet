@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en"><head><title>main/index</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="main/index"><meta name="groc-project-path" content="lib/main/index.js"><meta name="groc-github-url" content="https://github.com/Slashat/slashbet"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/Slashat/slashbet/blob/master/lib/main/index.js">lib/main/index.js</a></div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;views&#39;</span><span class="p">,</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/views&#39;</span><span class="p">);</span>
+
+
+<span class="kd">var</span> <span class="nx">auth</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../auth&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">sh</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;shorthash&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">pg</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;pg&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">helper</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../helper&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">bet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./models/bet.js&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">model_vote</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./models/vote.js&#39;</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h2 id="show-all-bets-ordered-by-votes">Show all bets ordered by votes</h2></div></div></div><div class="segment"><div class="code"><div class="wrapper"><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="nx">index</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">bet</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Slashbet&#39;</span><span class="p">,</span> <span class="nx">bets</span><span class="o">:</span> <span class="nx">result</span><span class="p">.</span><span class="nx">rows</span><span class="p">,</span> <span class="nx">isAuthenticated</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">isAuthenticated</span><span class="p">()</span> <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">});</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h2 id="show-a-single-bet-by-id">Show a single bet by id</h2></div></div></div><div class="segment"><div class="code"><div class="wrapper"><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/:id&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="nx">single</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+  <span class="nx">bet</span><span class="p">.</span><span class="nx">getSingle</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">rows</span><span class="p">.</span><span class="nx">length</span> <span class="o">!==</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">bet</span> <span class="o">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+      <span class="kd">var</span> <span class="nx">percent</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">bet</span><span class="p">.</span><span class="nx">yes</span> <span class="o">||</span> <span class="nx">bet</span><span class="p">.</span><span class="nx">no</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="nx">yes</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">bet</span><span class="p">.</span><span class="nx">yes</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+        <span class="nx">no</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">bet</span><span class="p">.</span><span class="nx">no</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+        <span class="nx">percent</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">((</span><span class="nx">yes</span> <span class="o">/</span> <span class="p">(</span><span class="nx">yes</span><span class="o">+</span><span class="nx">no</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;single&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="nx">bet</span><span class="p">.</span><span class="nx">bet</span><span class="o">+</span><span class="s2">&quot; &lt;small&gt;(&quot;</span><span class="o">+</span><span class="nx">bet</span><span class="p">.</span><span class="nx">date</span><span class="o">+</span><span class="s2">&quot;)&lt;/small&gt;&quot;</span><span class="p">,</span> <span class="nx">bet</span><span class="o">:</span> <span class="nx">bet</span><span class="p">,</span> <span class="nx">percent</span><span class="o">:</span> <span class="nx">percent</span><span class="p">,</span> <span class="nx">hex</span><span class="o">:</span> <span class="nx">bet</span><span class="p">.</span><span class="nx">color</span> <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">});</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h2 id="make-your-vote-count">Make your vote count!</h2></div></div></div><div class="segment"><div class="code"><div class="wrapper"><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/:id/:vote&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="nx">vote</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">){</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="o">||</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">vote</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">bet</span><span class="p">.</span><span class="nx">getSingle</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">rows</span><span class="p">.</span><span class="nx">length</span> <span class="o">!==</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">bet</span> <span class="o">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+      <span class="kd">var</span> <span class="nx">clientIP</span> <span class="o">=</span> <span class="nx">helper</span><span class="p">.</span><span class="nx">getClientAddress</span><span class="p">(</span><span class="nx">req</span><span class="p">);</span>
+
+      <span class="nx">model_vote</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">bet</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">clientIP</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">rows</span><span class="p">.</span><span class="nx">length</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+
+          <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="nx">bet_id</span><span class="o">:</span> <span class="nx">bet</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+            <span class="nx">ip</span><span class="o">:</span> <span class="nx">clientIP</span><span class="p">,</span>
+            <span class="nx">vote</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">vote</span>
+          <span class="p">};</span>
+
+          <span class="nx">model_vote</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Let's just hope it worked.
+At least for now :)</p></div></div><div class="code"><div class="wrapper">            <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+          <span class="p">});</span>
+        <span class="p">}</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/post&#39;</span><span class="p">,</span> <span class="nx">auth</span><span class="p">.</span><span class="nx">ensureAuthenticated</span><span class="p">,</span> <span class="kd">function</span> <span class="nx">post</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">bet</span><span class="o">:</span>  <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">bet</span><span class="p">,</span>
+    <span class="nx">hex</span><span class="o">:</span>  <span class="nx">helper</span><span class="p">.</span><span class="nx">ipToHex</span><span class="p">(</span><span class="nx">clientIP</span><span class="p">),</span>
+    <span class="nx">date</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">date</span> <span class="o">||</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">,</span>
+    <span class="nx">hash</span><span class="o">:</span> <span class="nx">sh</span><span class="p">.</span><span class="nx">unique</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">bet</span><span class="p">)</span>
+  <span class="p">};</span>
+
+  <span class="nx">bet</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Let's just hope it worked.
+At least for now :)</p></div></div><div class="code"><div class="wrapper">    <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></div></div></div></div></body></html>
