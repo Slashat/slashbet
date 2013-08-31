@@ -4,10 +4,11 @@ Slashbet
 
 Bra att ha
 ----------
+Håll scss filerna uppdaterade när du jobbar genom att köra:
 
 $ grunt watch
 
-Grunt sass kräver att du har sass gemen installerad
+Grunt sass kräver att du har sass gemen installerad (ruby)
 
 $ gem install sass
 
