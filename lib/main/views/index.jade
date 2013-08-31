@@ -3,7 +3,7 @@ extends ../../../views/layout
 block content
   ul
     each bet in bets
-      li(style="background:#"+bet.color)
+      li
         a(href=bet.id)= bet.bet+" ("+bet.date+")"
 
 block post

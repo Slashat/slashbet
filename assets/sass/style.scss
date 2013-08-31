@@ -27,7 +27,7 @@ ul {
 }
 
 li {
-  margin: 0;
+  margin: 0 0 5px;
   padding: 0;
   font-size: 20px;
   list-style: none;
@@ -45,6 +45,7 @@ li a {
 }
 
 form {
+  background: #fff;
   border: 1px solid #999;
   border-width: 0 0 1px 1px;
   padding: 10px;
@@ -56,6 +57,7 @@ input {
   font-size: 20px;
   border: none;
   display: inline-block;
+  outline: none;
 }
 
 .date {

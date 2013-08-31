@@ -23,7 +23,9 @@
   "devDependencies": {
         "grunt": "~0.4.1",
         "grunt-contrib-sass": "*",
-        "grunt-contrib-watch": "*"
+        "grunt-contrib-watch": "*",
+        "mocha": "*",
+        "chai": "*"
   },
   "engines": {
     "node": ">=0.10.0"
