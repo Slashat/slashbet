@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="en"><head><title>index</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="index"><meta name="groc-project-path" content="README.md"><meta name="groc-github-url" content="https://github.com/Slashat/slashbet"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><script type="text/javascript" src="assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/Slashat/slashbet/blob/master/README.md">README.md</a></div></div><div id="document"><div class="segment"><div class="comments"><div class="wrapper"><h1 id="slashbet">Slashbet</h1>
+
+<h2 id="bra-att-ha">Bra att ha</h2>
+
+<p>Håll scss filerna uppdaterade när du jobbar genom att köra:</p>
+
+<p>$ grunt watch</p>
+
+<p>Grunt sass kräver att du har sass gemen installerad (ruby)</p>
+
+<p>$ gem install sass</p>
+
+<h2 id="database">Database</h2>
+
+<p>CREATE DATABASE slashbet</p>
+
+<p>-- Table: bets</p>
+
+<p>-- DROP TABLE bets;</p>
+
+<p>CREATE TABLE bets
+(
+  id serial NOT NULL,
+  bet text,
+  color character(6),
+  date date,
+  hash character varying(10),
+  CONSTRAINT bets_key PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE bets
+  OWNER TO <user>;</p>
+
+<p>-- Table: votes</p>
+
+<p>-- DROP TABLE votes;</p>
+
+<p>CREATE TABLE votes
+(
+  bet<em>id integer NOT NULL,
+  ip character(15) NOT NULL,
+  vote boolean NOT NULL,
+  CONSTRAINT "Primary</em>key" PRIMARY KEY (bet_id, ip, vote)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE votes
+  OWNER TO <user>;</p></div></div></div></div></body></html>
