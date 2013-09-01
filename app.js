@@ -27,7 +27,6 @@ app.configure('development', function(){
   app.use(express.errorHandler({showStack: true, dumpExceptions: true}));
 });
 
-
 app.use(express.static(__dirname + '/public'));
 
 var auth = require('./lib/auth');
