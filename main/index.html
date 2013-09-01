@@ -3,7 +3,6 @@
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;views&#39;</span><span class="p">,</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/views&#39;</span><span class="p">);</span>
 
-
 <span class="kd">var</span> <span class="nx">auth</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../auth&#39;</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">sh</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;shorthash&#39;</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">pg</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;pg&#39;</span><span class="p">);</span>
@@ -70,14 +69,11 @@ At least for now :)</p></div></div><div class="code"><div class="wrapper">      
       <span class="p">});</span>
     <span class="p">}</span>
   <span class="p">});</span>
-<span class="p">});</span>
-
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/post&#39;</span><span class="p">,</span> <span class="nx">auth</span><span class="p">.</span><span class="nx">ensureAuthenticated</span><span class="p">,</span> <span class="kd">function</span> <span class="nx">post</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">});</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><h2 id="post-a-new-bet-if-youre-authorized">Post a new bet if you're authorized</h2></div></div></div><div class="segment"><div class="code"><div class="wrapper"><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/post&#39;</span><span class="p">,</span> <span class="nx">auth</span><span class="p">.</span><span class="nx">ensureAuthenticated</span><span class="p">,</span> <span class="kd">function</span> <span class="nx">post</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
 
   <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
     <span class="nx">bet</span><span class="o">:</span>  <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">bet</span><span class="p">,</span>
-    <span class="nx">hex</span><span class="o">:</span>  <span class="nx">helper</span><span class="p">.</span><span class="nx">ipToHex</span><span class="p">(</span><span class="nx">clientIP</span><span class="p">),</span>
+    <span class="nx">hex</span><span class="o">:</span>  <span class="nx">helper</span><span class="p">.</span><span class="nx">ipToHex</span><span class="p">(</span><span class="nx">helper</span><span class="p">.</span><span class="nx">getClientAddress</span><span class="p">(</span><span class="nx">req</span><span class="p">)),</span>
     <span class="nx">date</span><span class="o">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">date</span> <span class="o">||</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">,</span>
     <span class="nx">hash</span><span class="o">:</span> <span class="nx">sh</span><span class="p">.</span><span class="nx">unique</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">bet</span><span class="p">)</span>
   <span class="p">};</span>
