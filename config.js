@@ -15,7 +15,8 @@ var development = {
     github: {
       clientID: '61f1b46a2a920718343e',
       clientSecret : '82b89a3d2c5256c88e53d62fde7febe93e8c971c',
-      clientCallback : "http://0.0.0.0:3000/auth/github/callback"
+      clientCallback : "http://0.0.0.0:3000/auth/github/callback",
+      ids : [4736869, 183679, 1025989]
     }
   }
 };
@@ -26,7 +27,8 @@ var production = {
     github: {
       clientID : 'a777f91dd262e22b5d22', // Needs to be extracted to ENV
       clientSecret : '6f4cc0339e3f460a22a8f0a952930f0ba225d3fe', // Needs to be extracted to ENV
-      clientCallback : "http://bet.slashat.se/auth/github/callback"
+      clientCallback : "http://bet.slashat.se/auth/github/callback",
+      ids : [4736869, 183679, 1025989]
     }
   }
 };
