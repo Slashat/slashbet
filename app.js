@@ -27,6 +27,10 @@ app.configure('development', function(){
   app.use(express.errorHandler({showStack: true, dumpExceptions: true}));
 });
 
+
+var User = require('./lib/auth/models/user.js');
+User.setup(); // Create table if it doesn't exist;
+
 app.use(express.static(__dirname + '/public'));
 
 var auth = require('./lib/auth');
