@@ -3,16 +3,23 @@ extends ../../../views/layout
 block content
 
   div.block
-    h2 Flest poäng.
+    h2 Flest poäng
     ol
       each bet in bets_most_points
         li
           a(href=bet.id)= bet.bet+" ("+bet.date+")"
 
   div.block
-    h2 Går snart ut.
+    h2 Går snart ut
     ol
       each bet in bets_close_enddate
+        li
+          a(href=bet.id)= bet.bet+" ("+bet.date+")"
+
+  div.block
+    h2 Arkiverade
+    ol
+      each bet in archived
         li
           a(href=bet.id)= bet.bet+" ("+bet.date+")"
 
