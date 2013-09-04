@@ -1,47 +1,40 @@
 body {
-  padding: 50px;
+  padding: 30px 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: url('http://slashat.se/wp-content/themes/Aggregate/images/body-bg17.png');
+  background: rgba(239, 236, 227, 0.71); //url('http://slashat.se/wp-content/themes/Aggregate/images/body-bg17.png');
+}
+
+.block {
+  width: 45%;
+  margin-right: 5%;
+  float: left;
+
+  ol {
+    padding: 0;
+    list-style-position: inside;
+
+    li {
+      padding: 5px 0;
+    }
+  }
 }
 
 a {
   color: #00B7FF;
+  text-decoration: none;
 }
 
 h1 {
   font-size: 40px;
   text-align: center;
-  font-family: 'Kreon', Arial, sans-serif
+  font-family: 'Kreon', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 small {
   display: block;
   font-size: 12px;
-}
-
-ul {
-  padding: 0;
-  margin: 20px 0 0;
-  list-style: none;
-  overflow: hidden;
-}
-
-li {
-  margin: 0 0 5px;
-  padding: 0;
-  font-size: 20px;
-  list-style: none;
-}
-
-li a {
-  padding: 10px;
-  display: block;
-  text-decoration: none;
-  color: #000;
-
-  &:hover {
-    background: #ccc;
-  }
 }
 
 form {
@@ -60,9 +53,77 @@ input {
   outline: none;
 }
 
-.date {
-  width: 20%;
+.back {
+  position: absolute;
+  top: 0;
+  text-decoration: none;
+  left: 0;
+  background: rgba(0,0,0, 0.2);
+  display: block;
+  padding: 10px 15px;
+  color: #000;
+
+  &:hover {
+    background: rgba(0,0,0, 0.5);
+  }
 }
+
+.meta {
+  float: right;
+  padding: 0 0 10px;
+  border-bottom: 4px solid #1a1a1a;
+  margin: 0 0 10px;
+}
+
+.vote {
+
+  text-align: center;
+  position: relative;
+  top: -30px;
+  clear: both;
+
+  ul {
+    padding: 0;
+    display: inline-block;
+    list-style: none;
+  }
+
+  li {
+    float: left;
+  }
+
+  span {
+    float: left;
+    clear: left;
+    width: 70px;
+    margin-top: 5px;
+  }
+
+  a {
+    line-height: 70px;
+    width: 70px;
+    float: left;
+    margin-right: 20px;
+    border-radius: 15px;
+    background: #1a1a1a;
+    font-size: 40px;
+    color: #fff;
+
+    &:hover {
+      background: #3d3d3d;
+    }
+
+    &:active {
+      background: #de5214;
+    }
+  }
+
+}
+
+
+// * { outline: 1px solid #f00; }
+// * * { outline: 1px solid #0f0; }
+// * * * { outline: 1px solid #00f; }
 
 
 .bar {
@@ -71,7 +132,7 @@ input {
   position: relative;
   background-color: #1a1a1a;
   padding: 5px;
-  margin: 70px 0 20px 0;
+  margin: 0 0 20px 0;
   -moz-border-radius: 5px;
   border-radius: 5px;
   -moz-box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
@@ -90,30 +151,11 @@ input {
     border-radius: 3px;
     -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
     box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
-
     width: 100%;
-  }
 
-  p {
-    width: 50%;
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    margin: 0;
-    height: 60px;
-    line-height: 60px;
-  }
-
-  a {
-    padding: 0 10px;
-    display: block;
-    text-decoration: none;
-    color: #000;
-  }
-
-  .no {
-    text-align: right;
-    right: 0;
+    div {
+      border-right: 5px solid #1a1a1a;
+    }
   }
 
   div {
@@ -132,3 +174,5 @@ input {
   }
 
 }
+
+@import 'fonts';

@@ -1,57 +1,49 @@
+@charset "UTF-8";
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\000031}}
 body {
-  padding: 50px;
+  padding: 30px 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: url("http://slashat.se/wp-content/themes/Aggregate/images/body-bg17.png");
+  background: rgba(239, 236, 227, 0.71);
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\000037}}
-a {
-  color: #00B7FF;
+.block {
+  width: 45%;
+  margin-right: 5%;
+  float: left;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000312}}
+.block ol {
+  padding: 0;
+  list-style-position: inside;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000316}}
+.block ol li {
+  padding: 5px 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000311}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000322}}
+a {
+  color: #00B7FF;
+  text-decoration: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000327}}
 h1 {
   font-size: 40px;
   text-align: center;
-  font-family: "Kreon", Arial, sans-serif;
+  font-family: 'Kreon', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000317}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000335}}
 small {
   display: block;
   font-size: 12px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000322}}
-ul {
-  padding: 0;
-  margin: 20px 0 0;
-  list-style: none;
-  overflow: hidden;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000329}}
-li {
-  margin: 0 0 5px;
-  padding: 0;
-  font-size: 20px;
-  list-style: none;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000336}}
-li a {
-  padding: 10px;
-  display: block;
-  text-decoration: none;
-  color: #000;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000342}}
-li a:hover {
-  background: #ccc;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000347}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000340}}
 form {
   background: #fff;
   border: 1px solid #999;
@@ -59,7 +51,7 @@ form {
   padding: 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000354}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000347}}
 input {
   padding: 0;
   width: 80%;
@@ -69,25 +61,88 @@ input {
   outline: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000363}}
-.date {
-  width: 20%;
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000356}}
+.back {
+  position: absolute;
+  top: 0;
+  text-decoration: none;
+  left: 0;
+  background: rgba(0, 0, 0, 0.2);
+  display: block;
+  padding: 10px 15px;
+  color: #000;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000366}}
+.back:hover {
+  background: rgba(0, 0, 0, 0.5);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000368}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000371}}
+.meta {
+  float: right;
+  padding: 0 0 10px;
+  border-bottom: 4px solid #1a1a1a;
+  margin: 0 0 10px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000378}}
+.vote {
+  text-align: center;
+  position: relative;
+  top: -30px;
+  clear: both;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000385}}
+.vote ul {
+  padding: 0;
+  display: inline-block;
+  list-style: none;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000391}}
+.vote li {
+  float: left;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000395}}
+.vote span {
+  float: left;
+  clear: left;
+  width: 70px;
+  margin-top: 5px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\00003102}}
+.vote a {
+  line-height: 70px;
+  width: 70px;
+  float: left;
+  margin-right: 20px;
+  border-radius: 15px;
+  background: #1a1a1a;
+  font-size: 40px;
+  color: #fff;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\00003112}}
+.vote a:hover {
+  background: #3d3d3d;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\00003116}}
+.vote a:active {
+  background: #de5214;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\00003129}}
 .bar {
   height: 50px;
   border-radius: 10px;
   position: relative;
   background-color: #1a1a1a;
   padding: 5px;
-  margin: 70px 0 20px 0;
+  margin: 0 0 20px 0;
   -moz-border-radius: 5px;
   border-radius: 5px;
   -moz-box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
   box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000380}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\00003141}}
 .bar .inner {
   background-color: #fecf23;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#fecf23), to(#fd9215));
@@ -103,29 +158,11 @@ input {
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
   width: 100%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\0000397}}
-.bar p {
-  width: 50%;
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  margin: 0;
-  height: 60px;
-  line-height: 60px;
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\00003156}}
+.bar .inner div {
+  border-right: 5px solid #1a1a1a;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\00003107}}
-.bar a {
-  padding: 0 10px;
-  display: block;
-  text-decoration: none;
-  color: #000;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\00003114}}
-.bar .no {
-  text-align: right;
-  right: 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\00003119}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/style\.scss}line{font-family:\00003161}}
 .bar div {
   background-color: #d43b11;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#d43b11), to(#9f2c0b));
@@ -141,3 +178,59 @@ input {
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
   height: 100%;
 }
+
+@font-face {
+  font-family: 'fontello';
+  src: url("../fonts/fontello.eot?87447553");
+  src: url("../fonts/fontello.eot?87447553#iefix") format("embedded-opentype"), url("../fonts/fontello.woff?87447553") format("woff"), url("../fonts/fontello.ttf?87447553") format("truetype"), url("../fonts/fontello.svg?87447553#fontello") format("svg");
+  font-weight: normsal;
+  font-style: normal;
+}
+
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?87447553#fontello') format('svg');
+  }
+}
+*/
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/_fonts\.scss}line{font-family:\0000322}}
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/_fonts\.scss}line{font-family:\0000352}}
+.icon-thumbs-up:before {
+  content: '\e800';
+}
+
+/* '' */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/stenehall\/Sites\/slashbet\/assets\/sass\/_fonts\.scss}line{font-family:\0000353}}
+.icon-thumbs-down:before {
+  content: '\e801';
+}
+
+/* '' */

@@ -1,13 +1,21 @@
 extends ../../../views/layout
 
 block content
-  Skapat av #{bet.username}
+  a.back(href='/') Tillbaka
+  p.meta Skapat av: #{bet.username}, Går ut: #{date}
+
+  div.vote
+    ul
+      li
+        a(href="/"+bet.id+'/yes')
+          i.icon-thumbs-up
+        span (#{bet.yes})
+      li
+        a(href="/"+bet.id+'/no')
+          i.icon-thumbs-down
+        span (#{bet.no})
 
   if percent !== underfined
-    div(class="bar")
-      p.yes
-        a(href="/"+bet.id+'/yes') Rösta ja (#{bet.yes})
-      p.no
-        a(href="/"+bet.id+'/no') Rösta nej (#{bet.no})
+    div.bar
       div(class="inner")
         div(style="width:"+percent+"%;")

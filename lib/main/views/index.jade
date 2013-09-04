@@ -1,13 +1,24 @@
 extends ../../../views/layout
 
 block content
-  ul
-    each bet in bets
-      li
-        a(href=bet.id)= bet.bet+" ("+bet.date+")"
+
+  div.block
+    h2 Flest poäng.
+    ol
+      each bet in bets_most_points
+        li
+          a(href=bet.id)= bet.bet+" ("+bet.date+")"
+
+  div.block
+    h2 Går snart ut.
+    ol
+      each bet in bets_close_enddate
+        li
+          a(href=bet.id)= bet.bet+" ("+bet.date+")"
 
 block post
   if isAuthenticated
     form(action='/post',method='post')
       input(id='bet',type='text',value='',placeholder='Skriv in ditt bet här',name='bet')
       input(id='date',class='date',type='date', name='date')
+      input(id='submit',class='submit',type='submit',value='Posta')
