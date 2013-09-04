@@ -15,12 +15,12 @@
     "jade": "*",
     "shorthash": "*",
     "mysql": "*",
-    "node-sass": "*",
     "pg": "2.x",
     "passport": "*",
     "passport-github": "*"
   },
   "devDependencies": {
+        "node-sass": "*",
         "grunt": "~0.4.1",
         "grunt-contrib-sass": "*",
         "grunt-contrib-watch": "*",
