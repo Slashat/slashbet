@@ -4,16 +4,17 @@ block content
   a.back(href='/') Tillbaka
   p.meta Skapat av: #{bet.username}, Går ut: #{date}
 
-  div.vote
-    ul
-      li
-        a(href="/"+bet.id+'/yes')
-          i.icon-thumbs-up
-        span (#{bet.yes})
-      li
-        a(href="/"+bet.id+'/no')
-          i.icon-thumbs-down
-        span (#{bet.no})
+  if archive
+    div.vote
+      ul
+        li
+          a(href="/"+bet.id+'/yes')
+            i.icon-thumbs-up
+          span (#{bet.yes})
+        li
+          a(href="/"+bet.id+'/no')
+            i.icon-thumbs-down
+          span (#{bet.no})
 
   if percent !== underfined
     div.bar

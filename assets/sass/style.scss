@@ -1,7 +1,7 @@
 body {
   padding: 30px 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: rgba(239, 236, 227, 0.71); //url('http://slashat.se/wp-content/themes/Aggregate/images/body-bg17.png');
+  background: rgba(239, 236, 227, 0.71);
 }
 
 .block {
@@ -38,19 +38,31 @@ small {
 }
 
 form {
-  background: #fff;
-  border: 1px solid #999;
-  border-width: 0 0 1px 1px;
-  padding: 10px;
+  padding: 20px 0;
+  overflow: hidden;
 }
 
 input {
-  padding: 0;
-  width: 80%;
+  padding: 10px;
+  margin: 0 10px 0 0;
+  background: #ccc;
   font-size: 20px;
   border: none;
-  display: inline-block;
+  float: left;
+  line-height: 1
+}
+
+input[type="text"] {
+  width: 60%;
   outline: none;
+  padding: 14px 10px 13px;
+}
+
+input[type="submit"] {
+  width: 9%;
+  border: none;
+  padding: 16px 10px 16px;
+  font-size: 18px;
 }
 
 .back {
@@ -72,14 +84,14 @@ input {
   float: right;
   padding: 0 0 10px;
   border-bottom: 4px solid #1a1a1a;
-  margin: 0 0 10px;
+  margin: 50px 0 10px;
 }
 
 .vote {
 
   text-align: center;
   position: relative;
-  top: -30px;
+  top: -70px;
   clear: both;
 
   ul {
@@ -117,13 +129,7 @@ input {
       background: #de5214;
     }
   }
-
 }
-
-
-// * { outline: 1px solid #f00; }
-// * * { outline: 1px solid #0f0; }
-// * * * { outline: 1px solid #00f; }
 
 
 .bar {
@@ -137,6 +143,7 @@ input {
   border-radius: 5px;
   -moz-box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
   box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;
+  clear: both;
 
   .inner {
     background-color: #fecf23;
@@ -146,12 +153,12 @@ input {
     background-image: -ms-linear-gradient(top, #fecf23, #fd9215);
     background-image: -o-linear-gradient(top, #fecf23, #fd9215);
     background-image: linear-gradient(top, #fecf23, #fd9215);
-    display: inline-block;
-    height: 100%;
-    border-radius: 3px;
     -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
     box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
     width: 100%;
+    height: 100%;
+    display: inline-block;
+    border-radius: 3px;
 
     div {
       border-right: 5px solid #1a1a1a;
@@ -166,11 +173,11 @@ input {
     background-image: -ms-linear-gradient(top, #d43b11, #9f2c0b);
     background-image: -o-linear-gradient(top, #d43b11, #9f2c0b);
     background-image: linear-gradient(top, #d43b11, #9f2c0b);
-    display: inline-block;
-    height: 100%;
-    border-radius: 3px 0 0 3px;
     -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
     box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;    height: 100%;
+    height: 100%;
+    display: inline-block;
+    border-radius: 3px 0 0 3px;
   }
 
 }
