@@ -23,6 +23,12 @@ block content
         li
           a(href=bet.id)= bet.bet+" ("+bet.date+")"
 
+  div.block
+    h2 Stats
+    ol
+      each value, key in stats
+        li #{key} = #{value}
+
 block post
   if isAuthenticated
     form(action='/post',method='post')

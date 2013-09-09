@@ -12,7 +12,7 @@ Grunt sass kräver att du har sass gemen installerad (ruby)
 
 $ gem install sass
 
-
+DATABASE_URL=postgres://<username>:@127.0.0.1/slashbet nodemon app.js
 
 Database
 --------
