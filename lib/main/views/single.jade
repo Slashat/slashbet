@@ -7,15 +7,19 @@ block content
     div.vote
       ul
         li
-          if archive
+          if notArchived
             a(href="/"+bet.id+'/yes')
               i.icon-thumbs-up
-          span (#{bet.yes})
+            span (#{bet.yes})
+          else
+            span Ja (#{bet.yes})
         li
-          if archive
+          if notArchived
             a(href="/"+bet.id+'/no')
               i.icon-thumbs-down
-          span (#{bet.no})
+            span (#{bet.no})
+          else
+            span Nej (#{bet.no})
 
   if percent !== underfined
     div.bar
